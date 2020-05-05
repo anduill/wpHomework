@@ -24,3 +24,4 @@ libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "3.0.4" % Test)
 
 resolvers += "Sonatype snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/"
+resolvers += Resolver.bintrayRepo("zamblauskas", "maven")
