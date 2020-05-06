@@ -31,18 +31,12 @@ class InputParserSpec extends FlatSpec with Matchers {
 //      unpackJsonResponse(resp)
 //    })}
 //    val responseJson = response.unsafeRunSync()
-    val fetcher = SimpleRemoteFetcher()
+    val fetcher = SimpleRemoteFetcher(Http1Client[IO]().unsafeRunSync())
     val decodedResponse = fetcher.fetchAccount(918299)
     println(s"Response: $decodedResponse")
 
     test_file.close()
     println("yo")
   }
-  // This can extract the JSON object out of the Response
-  def unpackJsonResponse(response: Response[IO])(implicit decoder: EntityDecoder[IO, String]): IO[Json] = {
-    import io.circe.parser._
-    val result = decoder.decode(response, false)
-    val json = parse(result.value.unsafeRunSync().right.get).right.get
-    IO(json)
-  }
+
 }

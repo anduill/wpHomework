@@ -20,9 +20,9 @@ object InputParsing {
     }
   }
   def parseCsvInputStream(source: BufferedSource): Seq[Try[CsvAccountRecord]] = {
-    source.getLines().map(parseCsvLine).toStream
+    source.getLines().toStream.tail.map(parseCsvLine)//Done to skip header
   }
-  def parseRemoteJsonString(json: Json): Try[RemoteAccountRecord] = {
+  def parseRemoteJsonObject(json: Json): Try[RemoteAccountRecord] = {
     json.as[RemoteAccountRecord].toTry
   }
 }
