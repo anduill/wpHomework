@@ -1,0 +1,67 @@
+{
+  "count": 12,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "account_id": 314159,
+      "status": "good",
+      "created_on": "2012-01-12"
+    },
+    {
+      "account_id": 271,
+      "status": "good",
+      "created_on": "2011-03-22"
+    },
+    {
+      "account_id": 8675309,
+      "status": "closed",
+      "created_on": "2014-12-21"
+    },
+    {
+      "account_id": 99999,
+      "status": "fraud",
+      "created_on": "2014-09-17"
+    },
+    {
+      "account_id": 12345,
+      "status": "good",
+      "created_on": "2011-01-12"
+    },
+    {
+      "account_id": 8172,
+      "status": "closed",
+      "created_on": "2015-09-01"
+    },
+    {
+      "account_id": 1924,
+      "status": "fraud",
+      "created_on": "2012-03-01"
+    },
+    {
+      "account_id": 222222,
+      "status": "poor",
+      "created_on": "2014-01-02"
+    },
+    {
+      "account_id": 666,
+      "status": "high risk",
+      "created_on": "2015-04-01"
+    },
+    {
+      "account_id": 48213,
+      "status": "high risk",
+      "created_on": "2015-08-15"
+    },
+    {
+      "account_id": 918299,
+      "status": "good",
+      "created_on": "2014-06-01"
+    },
+    {
+      "account_id": 88888,
+      "status": "collections",
+      "created_on": "2015-08-08"
+    }
+  ]
+}
