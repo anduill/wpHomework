@@ -1,7 +1,8 @@
 package org.wpengine.account.resolver
 
-import org.wpengine.account.resolver.DomainObjects.{
+import org.wpengine.account.resolver.Domain.{
   CombinedAccountRecord,
+  CompositeRecord,
   CsvAccountRecord,
   RemoteAccountRecord
 }
@@ -16,8 +17,9 @@ object AccountMerger {
       csvAcct <- csvAccount
       remoteAcct <- remoteAccount
     } yield {
-      if(csvAcct.accountId != remoteAcct.account_id){
-        throw new IllegalArgumentException(s"csvAccountId ${csvAcct.accountId} does not match remoteAcctId ${remoteAcct.account_id}")
+      if (csvAcct.accountId != remoteAcct.account_id) {
+        throw new IllegalArgumentException(
+          s"csvAccountId ${csvAcct.accountId} does not match remoteAcctId ${remoteAcct.account_id}")
       } else {
         CombinedAccountRecord(
           accountId = csvAcct.accountId,
@@ -31,4 +33,12 @@ object AccountMerger {
     }
     result
   }
+  def streamJoinedAccounts(csvStream: Seq[CompositeRecord[CsvAccountRecord]],
+                           fetcher: RemoteAccountFetcher): Seq[CompositeRecord[CombinedAccountRecord]] = {
+    csvStream.map {compRecord =>
+      val remoteRecord = compRecord._2.flatMap {csvRec => fetcher.fetchAccount(csvRec.accountId)}
+      (compRecord._1, joinAccounts(compRecord._2, remoteRecord))
+    }
+  }
+
 }

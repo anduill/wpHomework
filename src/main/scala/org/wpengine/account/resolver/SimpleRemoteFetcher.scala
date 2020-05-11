@@ -5,7 +5,7 @@ import cats.effect.IO
 import io.circe.Json
 import org.http4s.client.Client
 import org.http4s.{EntityDecoder, Response, Uri}
-import org.wpengine.account.resolver.DomainObjects.RemoteAccountRecord
+import org.wpengine.account.resolver.Domain.RemoteAccountRecord
 
 import scala.util.Try
 

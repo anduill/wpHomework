@@ -1,6 +1,8 @@
 package org.wpengine.account.resolver
 
-object DomainObjects {
+import scala.util.Try
+
+object Domain {
   case class CsvAccountRecord(accountId: Long,
                               accountName: Option[String],
                               firstName: Option[String],
@@ -15,4 +17,15 @@ object DomainObjects {
                                    createdOn: Option[String],
                                    status: Option[String],
                                    statusOn: Option[String])
+
+  def combinedRecToCsv(comb: CombinedAccountRecord): String = {
+    s"${comb.accountId.toString},${comb.firstName.getOrElse("")},${comb.createdOn.getOrElse(
+      "")},${comb.status.getOrElse("")},${comb.statusOn.getOrElse("")}"
+  }
+  type OriginalInput = String
+  type CompositeRecord[R] = (OriginalInput, Try[R])
+
+  val inputHeaderString = "Account ID,Account Name,First Name,Created On"
+  val outputHeaderString =
+    "Account ID,First Name,Created On,Status,Status Set On"
 }

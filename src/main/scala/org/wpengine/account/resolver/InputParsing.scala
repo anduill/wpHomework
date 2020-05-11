@@ -4,7 +4,7 @@ import java.io.InputStream
 
 import io.circe.Json
 import io.circe.generic.auto._
-import org.wpengine.account.resolver.DomainObjects.{CsvAccountRecord, RemoteAccountRecord}
+import org.wpengine.account.resolver.Domain.{CompositeRecord, CsvAccountRecord, RemoteAccountRecord}
 
 import scala.io.BufferedSource
 import scala.util.Try
@@ -19,8 +19,10 @@ object InputParsing {
       throw new IllegalArgumentException(s"Line: ($line) does not have 4 comma-delimited values")
     }
   }
-  def parseCsvInputStream(source: BufferedSource): Seq[Try[CsvAccountRecord]] = {
-    source.getLines().toStream.tail.map(parseCsvLine)//Done to skip header
+  def parseCsvInputStream(source: BufferedSource): Seq[CompositeRecord[CsvAccountRecord]] = {
+    source.getLines().toStream.tail.map {line =>
+      (line, parseCsvLine(line))
+    }//Done to skip header
   }
   def parseRemoteJsonObject(json: Json): Try[RemoteAccountRecord] = {
     json.as[RemoteAccountRecord].toTry

@@ -1,6 +1,6 @@
 package org.wpengine.account.resolver
 
-import org.wpengine.account.resolver.DomainObjects.RemoteAccountRecord
+import org.wpengine.account.resolver.Domain.RemoteAccountRecord
 
 import scala.util.Try
 

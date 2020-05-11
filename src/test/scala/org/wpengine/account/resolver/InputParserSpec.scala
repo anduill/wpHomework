@@ -11,7 +11,7 @@ import org.http4s.circe._
 import org.http4s.dsl.io._
 import io.circe.generic.auto._
 import org.http4s.client.blaze.Http1Client
-import org.wpengine.account.resolver.DomainObjects.RemoteAccountRecord
+import org.wpengine.account.resolver.Domain.RemoteAccountRecord
 
 import scala.concurrent.ExecutionContext.global
 import scala.io.{BufferedSource, Source}
