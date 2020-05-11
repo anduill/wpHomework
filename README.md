@@ -25,14 +25,14 @@ This is a simple scala SBT project.  It can be built, tested, and assembled as f
 ```shell script
 sbt clean test assembly
 ```
-This will produce a jar artifact in <Project_Directory>/target/scala-<scala-version>/wp_engine_account_resolve-assembly-<version>.jar
+This will produce a jar artifact in <Project_Directory>/target/scala-SCALA_VERSION/wp_engine_account_resolve-assembly-VERSION.jar
 
 The project can also be built with the build script:
 
 ```shell script
 ./build.sh
 ```
-This script simply runs the above sbt-command and copies the build artifact to <Project_Directory>/account_resolver.jar
+This script simply runs the above sbt-command and copies the build artifact to Project_Directory/account_resolver.jar
 
 ## Running wpe_merge
 
