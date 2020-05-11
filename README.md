@@ -1,6 +1,6 @@
 # WP Homework
 
-##Problem Description
+## Problem Description
 The goal of the coding exercise is to write a program that reads from the provided CSV file and combines its information with data from the API
 
 * Given a CSV file with the following columns including a header row containing Account ID, Account Name, First Name, and Created On
