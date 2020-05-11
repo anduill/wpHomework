@@ -14,7 +14,7 @@ For every line of data in the CSV, we want to:
 * Merge it with the CSV data to output into a new CSV with columns of Account ID, First Name, Created On, Status, and Status Set On
 
 ## Project requirements
-This project requires java 11.  I built it locally with java 11.0.7.  It also require scala-sbt version 1.3.10.  If you have
+This project requires java 11.  I built it locally with java 11.0.7.  It also requires scala-sbt version 1.3.10.  If you have
 already have sbt installed, it "should" "just work".  The project will download the requested sbt (i.e. project/build.properties).
 SDKMan can be used to get the required installs: https://sdkman.io/sdks#sbt 
 
