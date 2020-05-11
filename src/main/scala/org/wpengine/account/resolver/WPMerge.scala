@@ -12,6 +12,9 @@ import pureconfig.generic.auto._
 
 import scala.io.{BufferedSource, Source}
 
+/**
+ * This is the entry point for the program.  It first grabs configuration and then attempts to run the routine.
+ */
 object WPMerge extends App with LazyLogging {
   val config: Result[WPMergeConfig] = ConfigSource.default.load[WPMergeConfig]
   config match {

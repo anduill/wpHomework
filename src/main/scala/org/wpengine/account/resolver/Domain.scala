@@ -18,6 +18,11 @@ object Domain {
                                    status: Option[String],
                                    statusOn: Option[String])
 
+  /**
+   *
+   * @param comb is the combined record
+   * @return CSV string for record
+   */
   def combinedRecToCsv(comb: CombinedAccountRecord): String = {
     s"${comb.accountId.toString},${comb.firstName.getOrElse("")},${comb.createdOn.getOrElse(
       "")},${comb.status.getOrElse("")},${comb.statusOn.getOrElse("")}"

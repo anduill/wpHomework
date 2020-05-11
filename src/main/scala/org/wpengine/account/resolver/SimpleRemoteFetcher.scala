@@ -11,6 +11,12 @@ import scala.util.Try
 
 case class SimpleRemoteFetcher(simpleClient: Client[IO], acctsBaseUrl: String) extends RemoteAccountFetcher {
   val pathPrefix = "v1/accounts"
+
+  /**
+   *
+   * @param accountId corresponds to the id of record we with to retrieve from the remote service
+   * @return an attempt to parse external record to RemoteAccountRecord object model
+   */
   override def fetchAccount(accountId: Long): Try[RemoteAccountRecord] = {
     val uri = Uri.fromString(s"$acctsBaseUrl/$pathPrefix/$accountId").right.get
     val response = simpleClient.get[Json](uri = uri)({resp =>

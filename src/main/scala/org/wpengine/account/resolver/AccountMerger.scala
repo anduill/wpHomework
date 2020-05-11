@@ -10,6 +10,12 @@ import org.wpengine.account.resolver.Domain.{
 import scala.util.Try
 
 object AccountMerger {
+  /**
+   *
+   * @param csvAccount is account from the CSV file
+   * @param remoteAccount is account from remote service
+   * @return the combined records
+   */
   def joinAccounts(
       csvAccount: Try[CsvAccountRecord],
       remoteAccount: Try[RemoteAccountRecord]): Try[CombinedAccountRecord] = {
@@ -33,6 +39,13 @@ object AccountMerger {
     }
     result
   }
+
+  /**
+   *
+   * @param csvStream stream of csv records
+   * @param fetcher remote data accessor for getting remote records
+   * @return stream of the combined records
+   */
   def streamJoinedAccounts(csvStream: Seq[CompositeRecord[CsvAccountRecord]],
                            fetcher: RemoteAccountFetcher): Seq[CompositeRecord[CombinedAccountRecord]] = {
     csvStream.map {compRecord =>
