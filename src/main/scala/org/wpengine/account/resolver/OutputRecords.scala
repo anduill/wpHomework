@@ -17,6 +17,7 @@ object OutputRecords extends LazyLogging{
   }
   def writeOutCsvRecordsHelper(recs: Seq[CompositeRecord[CombinedAccountRecord]], writer: BufferedWriter): Unit = {
     if(recs.isEmpty){
+      writer.flush()
       writer.close()
     } else {
       writer.newLine()
