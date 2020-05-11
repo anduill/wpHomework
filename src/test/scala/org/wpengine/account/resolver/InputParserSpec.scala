@@ -1,6 +1,6 @@
 package org.wpengine.account.resolver
 
-import java.io.{BufferedWriter, FileWriter, StringWriter}
+import java.io.{BufferedWriter, StringWriter}
 
 import org.scalatest.{FlatSpec, Matchers}
 import InputParsing._

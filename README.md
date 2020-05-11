@@ -13,6 +13,11 @@ For every line of data in the CSV, we want to:
 * Pull the information from the API for the Account ID
 * Merge it with the CSV data to output into a new CSV with columns of Account ID, First Name, Created On, Status, and Status Set On
 
+## Project requirements
+This project require java 11.  I built it locally with java 11.0.7.  It also require scala-sbt version 1.3.10.  If you have
+already have sbt installed, it "should" "just work".  The project will download the requested sbt (i.e. project/build.properties).
+SDKMan can be used to get the required installs: https://sdkman.io/sdks#sbt 
+
 ## Building and Testing Solution
 
 This is a simple scala SBT project.  It can be built, tested, and assembled as follows:
