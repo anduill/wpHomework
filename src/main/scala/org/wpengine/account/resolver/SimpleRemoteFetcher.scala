@@ -4,7 +4,7 @@ import org.http4s.dsl.io._
 import cats.effect.IO
 import io.circe.Json
 import org.http4s.client.Client
-import org.http4s.{EntityDecoder, Response, Uri}
+import org.http4s.{EntityDecoder, Response, Status, Uri}
 import org.wpengine.account.resolver.Domain.RemoteAccountRecord
 
 import scala.util.Try
@@ -22,8 +22,13 @@ case class SimpleRemoteFetcher(simpleClient: Client[IO], acctsBaseUrl: String = 
   def unpackJsonResponse(response: Response[IO])(implicit decoder: EntityDecoder[IO, String]): IO[Json] = {
     import io.circe.parser._
     IO {
-      val result = decoder.decode(response, false)
-      parse(result.value.unsafeRunSync().right.get).right.get
+      response.status match {
+        case Status.Ok =>
+          val result = decoder.decode(response, false)
+          parse(result.value.unsafeRunSync().right.get).right.get
+        case badStatus =>
+          throw new RuntimeException(s"Invalid Response from Account Endpoint. Status: ${badStatus}")
+      }
     }
   }
 }

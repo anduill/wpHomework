@@ -17,7 +17,8 @@ class InputParserSpec extends FlatSpec with Matchers {
     val writer = new BufferedWriter(new FileWriter("test_output.csv"))
     val csvRecords = parseCsvInputStream(test_file)
     val joinedRecords = AccountMerger.streamJoinedAccounts(csvRecords, fetcher)
-    OutputRecords.writeOutCsvRecords(joinedRecords, writer)
+    val ioRunner = OutputRecords.writeOutCsvRecords(joinedRecords, writer)
+    ioRunner.unsafeRunSync()
     test_file.close()
     println("done")
   }
