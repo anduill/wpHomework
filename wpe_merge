@@ -1,0 +1,15 @@
+#!/bin/sh
+
+if [[ -z "${SERVICE_LOCATION}" ]]; then
+  export SERVICE_LOCATION="http://interview.wpengine.io"
+fi
+if [[ -z "${WP_MERGE_JAR_LOCATION}" ]]; then
+  export WP_MERGE_JAR_LOCATION="./account_resolver.jar"
+fi
+
+export INPUT_FILE="$1"
+export OUTPUT_FILE="$2"
+echo "Input file is: $1"
+echo "output file is $2"
+echo "Service location is at: $SERVICE_LOCATION"
+java -cp $WP_MERGE_JAR_LOCATION org.wpengine.account.resolver.WPMerge
