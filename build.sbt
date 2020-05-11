@@ -15,6 +15,7 @@ libraryDependencies ++= Seq(
   "org.http4s" %% "http4s-client" % "0.18.9",
   "org.typelevel" %% "cats-core" % "2.0.0-M4",
   "com.typesafe.scala-logging" %% "scala-logging" % "3.9.2",
+  "com.github.pureconfig" %% "pureconfig" % "0.12.3",
   "ch.qos.logback" % "logback-classic" % "1.2.3",
   "io.circe" %% "circe-optics" % "0.9.3",
   "io.circe" %% "circe-core" % "0.9.3",

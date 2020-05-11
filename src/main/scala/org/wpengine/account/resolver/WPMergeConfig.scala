@@ -1,5 +1,7 @@
 package org.wpengine.account.resolver
 
-object WPMergeConfig {
-
-}
+case class WPMergeConfig(
+    inputFile: String,
+    outputFile: String,
+    serviceLocation: String
+)

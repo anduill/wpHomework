@@ -9,7 +9,7 @@ import org.wpengine.account.resolver.Domain.RemoteAccountRecord
 
 import scala.util.Try
 
-case class SimpleRemoteFetcher(simpleClient: Client[IO], acctsBaseUrl: String = "http://interview.wpengine.io") extends RemoteAccountFetcher {
+case class SimpleRemoteFetcher(simpleClient: Client[IO], acctsBaseUrl: String) extends RemoteAccountFetcher {
   val pathPrefix = "v1/accounts"
   override def fetchAccount(accountId: Long): Try[RemoteAccountRecord] = {
     val uri = Uri.fromString(s"$acctsBaseUrl/$pathPrefix/$accountId").right.get
